@@ -1,4 +1,6 @@
 import json
+from datetime import datetime
+import secrets
 
 
 def salvar_dados_usuarios(usuarios):
@@ -72,3 +74,52 @@ def fazer_login():
     print("Número máximo de tentativas alcançado. Saindo do programa.")
     return None  # Retorna None se o login falhar
 
+
+def validar_data(data):
+    try:
+        datetime.strptime(data, "%d/%m/%Y")
+        return True
+    except ValueError:
+        return False
+
+
+def validar_hora(hora):
+    try:
+        datetime.strptime(hora, "%H:%M")
+        return True
+    except ValueError:
+        return False
+
+
+def agendar_consulta(usuario):
+    if usuario is not None:
+        while True:
+            data = input("Digite a data da consulta (DD/MM/AAAA): ")
+            if validar_data(data):
+                break
+            else:
+                print("Data inválida. Tente novamente.")
+
+        while True:
+            hora = input("Digite a hora da consulta (HH:MM): ")
+            if validar_hora(hora):
+                break
+            else:
+                print("Hora inválida. Tente novamente.")
+
+        causas = input("Digite as causas da consulta: ")
+        motivos = input("Digite os motivos da consulta: ")
+
+        # Geração de um token aleatório
+        token = secrets.token_hex(20)
+
+        usuario["token_agendamento"] = token
+
+        # Aqui você pode usar as informações do usuário, os dados da consulta e o token conforme necessário
+        print(f"Consulta agendada para {data} às {hora}.")
+        print(f"Causas da consulta: {causas}")
+        print(f"Motivos da consulta: {motivos}")
+        print(f"Token de confirmação: {token}")
+        print(f"Guarde este token pois ele é a chave de entrada para sua consulta!")
+    else:
+        print("Usuário não logado. Faça o login antes de agendar uma consulta.")
