@@ -8,4 +8,4 @@ DESCRIÇÃO DO PROJETO: O nosso projeto tem como objetivo a criação de um app 
 
 REQUISITOS E DEPENDÊNCIAS: "IMPORT JSON", "FROM DATETIME IMPORT DATETIME", "IMPORT SECRETS".
 
-LINK --> 
+LINK --> https://youtu.be/wDTocffn8Sk
