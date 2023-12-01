@@ -123,3 +123,41 @@ def agendar_consulta(usuario):
         print(f"Guarde este token pois ele é a chave de entrada para sua consulta! Não se esqueça!")
     else:
         print("Usuário não logado. Faça o login antes de agendar uma consulta.")
+
+def realizar_consulta(usuario):
+    if usuario is not None:
+        token_agendamento = input("Digite o token de agendamento: ")
+        # Verifica o token
+        if token_agendamento == usuario.get("token_agendamento"):
+            print("Aguarde que você será redirecionado para a sala virtual da NotreDame Intermédica!")
+        else:
+            print("Token de agendamento inválido. A consulta não pode ser realizada.")
+    else:
+        print("Usuário não logado. Faça o login antes de realizar uma consulta.")
+
+def menu_principal():
+    usuario_logado = None
+    while True:
+        print("\n===== Menu Principal =====")
+        print("1. Cadastrar usuário")
+        print("2. Fazer login")
+        print("3. Agendar consulta")
+        print("4. Realizar consulta")
+        print("0. Sair")
+        opcao = int(input("Escolha uma opção: "))
+        if opcao == 1:
+            cadastrar_usuario()
+        elif opcao == 2:
+            usuario_logado = fazer_login()
+        elif opcao == 3:
+            agendar_consulta(usuario_logado)
+        elif opcao == 4:
+            realizar_consulta(usuario_logado)
+        elif opcao == 0:
+            print("Encerrando programa!")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+if __name__ == "__main__":
+    menu_principal()
