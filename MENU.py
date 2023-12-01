@@ -120,6 +120,6 @@ def agendar_consulta(usuario):
         print(f"Causas da consulta: {causas}")
         print(f"Motivos da consulta: {motivos}")
         print(f"Token de confirmação: {token}")
-        print(f"Guarde este token pois ele é a chave de entrada para sua consulta!")
+        print(f"Guarde este token pois ele é a chave de entrada para sua consulta! Não se esqueça!")
     else:
         print("Usuário não logado. Faça o login antes de agendar uma consulta.")
